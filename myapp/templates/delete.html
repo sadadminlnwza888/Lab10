@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="card shadow-sm" style="max-width: 500px; margin: 0 auto;">
+            <div class="card-header text-white text-center" style="background-color: #fd7e14;">
+                <h5 class="mb-0">ยืนยันการลบข้อมูล</h5>
+            </div>
+            <div class="card-body text-center">
+                <p class="fs-5">คุณต้องการลบ <strong>{{person.name}}</strong> (อายุ {{person.age}}) ใช่หรือไม่?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button type="submit" class="btn text-white" style="background-color: #fd7e14;">ยืนยันลบ</button>
+                        <a href="/" class="btn btn-secondary">ยกเลิก</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}
