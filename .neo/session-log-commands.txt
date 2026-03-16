@@ -1,0 +1,16 @@
+python3 manage.py startapp myapp 2>&1
+ls /Users/worapat47/effective-fishstick/Lab10/
+mkdir -p /Users/worapat47/effective-fishstick/Lab10/myapp/templates
+python3 manage.py makemigrations 2>&1 && python3 manage.py migrate 2>&1
+DJANGO_SUPERUSER_PASSWORD=ict12367 python3 manage.py createsuperuser --username admin --email admin@gmail.com --noinput 2>&1
+python3 manage.py shell -c "
+from myapp.models import Person
+Person.objects.create(name='วรพัธน์', age=22)
+Person.objects.create(name='สมชาย', age=30)
+Person.objects.create(name='สมหญิง', age=25)
+Person.objects.create(name='พิทยา', age=41)
+print('Added', Person.objects.count(), 'persons')
+" 2>&1
+timeout 5 python3 manage.py runserver 2>&1 || true
+python3 manage.py check 2>&1
+gh repo create sadadminlnwza888/Lab10 --public --description "Lab10 - Django Model & Table Display - 68043407" 2>&1
